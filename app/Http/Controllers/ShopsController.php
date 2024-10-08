@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Shop;
-use App\Models\Area;
-use App\Models\Genre;
 use Carbon\Carbon;
 
 class ShopsController extends Controller
@@ -13,10 +11,8 @@ class ShopsController extends Controller
     public function index()
     {
         $shops = Shop::getShops();
-        $areas = Area::all();
-        $genres = Genre::all();
-
-        return view('index', compact("shops", "areas", "genres"));
+        session()->flash('fs_msg', null);
+        return view('index', compact("shops"));
     }
     public function search(Request $request)
     {
@@ -24,11 +20,12 @@ class ShopsController extends Controller
         $genre_name = $request['genre'];
         $keyword = $request['keyword'];
 
-        $shops = Shop::searchShops($area_name, $genre_name, $keyword);
-        $areas = Area::all();
-        $genres = Genre::all();
+        $searchResult = Shop::searchShops($area_name, $genre_name, $keyword);
+        $shops = $searchResult['shops'];
+        $text = "「" . $searchResult['text'] . "」の検索結果";
 
-        return view('index', compact("shops", "areas", "genres", "area_name", "genre_name", "keyword"));
+        session()->flash('fs_msg', $text);
+        return view('index', compact("shops", "text"));
     }
     public function detail($shop_id)
     {

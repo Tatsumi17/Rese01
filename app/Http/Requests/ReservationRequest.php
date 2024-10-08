@@ -35,7 +35,7 @@ class ReservationRequest extends FormRequest
   {
     return [
       'date.required' => '日付は必須です',
-      'date.after' => '日付は昨日以降の日付でなければならない',
+      'date.after' => '日付は昨日以降の日付で設定してください',
       'time.required' => '時間は必須です',
       'user_num.required' => '人数入力は必須です',
     ];

@@ -11,13 +11,21 @@
     <p class="shop-detail__txt">#{{$shop->area->name}}&nbsp;#{{$shop->genre->name}}</p>
     <p class="shop-detail__txt">{{$shop->description}}</p>
   </div>
+
   <div class="reservation">
     <form class="reservation-card" action="/reservation" method="POST">
       @csrf
       <div class="reservation-card__content">
         <h2 class="reservation-card__content__ttl">予約</h2>
+        @if (count($errors) > 0)
+        <ul class="error__lists">
+          @foreach ($errors->all() as $error)
+          <li>{{$error}}</li>
+          @endforeach
+        </ul>
+        @endif
         <input type="hidden" name="shop_id" value="{!! $shop->id !!}">
-        <input type="date" value="{!! $today !!}" name="date" />
+        <input class="reservation-card__date-input" type="date" value="{!! $today !!}" name="date" />
         <div class="reservation-card__pull-down">
           <select name="time">
             <option value="17:00">17:00</option>

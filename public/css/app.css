@@ -1,9 +1,10 @@
-/* ヘッダー */
 .header {
   width: 85%;
   margin: 0 auto;
   padding: 1rem 0;
 }
+
+.header
 
 .header__hamburger {
   width: 40px;
@@ -83,10 +84,11 @@
 }
 
 .menu__item {
+  display: block;
   color: #305dff;
+  cursor: pointer;
   text-decoration: none;
   font-size: 32px;
-  display: block;
   margin-bottom: 30px;
 }
 
@@ -182,6 +184,7 @@
   background-color: #ffffff;
   border-radius: 5px;
   box-shadow: 2px 2px 4px gray;
+  margin-left: auto;
 }
 
 .search__pull-down {
@@ -338,6 +341,15 @@
   margin-bottom: 28px;
 }
 
+.error__lists{
+  margin: 1rem 0;
+  color: #fff;
+}
+
+.reservation-card__date-input{
+  padding: 7px 30px 7px 10px;
+}
+
 .reservation-card__pull-down {
   margin-top: 14px;
 }
@@ -380,14 +392,8 @@
   margin-bottom: 48px;
 }
 
-.mypage {
-  width: 85vw;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
 .status {
-  width: 40%;
+  width: 50%;
 }
 
 .status__ttl {
@@ -423,7 +429,7 @@
 }
 
 .likes {
-  width: 55%;
+  width: 50%;
 }
 
 .likes__ttl {

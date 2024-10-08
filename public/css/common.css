@@ -20,10 +20,7 @@
 
 .wrap {
   flex-wrap: wrap;
-}
-
-.between {
-  justify-content: space-between;
+  gap: 28px;
 }
 
 .center {
@@ -34,10 +31,21 @@
   align-items: center;
 }
 
+.ml-a{
+  margin-left: auto;
+}
+
 .main {
   width: 85%;
   margin: 0 auto;
   padding: 2.5rem 0;
+}
+
+.flash_message{
+  text-align: center;
+  background-color: #00c32ce0;
+  padding: 0.25rem 0;
+  color: #fff;
 }
 
 .error {

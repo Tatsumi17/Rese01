@@ -11,7 +11,7 @@
         <div class="flex align-items-center between status__card__top">
           <img src="/img/time.png" alt="time-icon" width="25px" height="25px" />
           <p>予約{{ $reservation->pivot->id }}</p>
-          <form action="{{ route('reserve.delete', ['reservation_id' => $reservation->pivot->id]) }}" method="POST">
+          <form class="ml-a" action="{{ route('reserve.delete', ['reservation_id' => $reservation->pivot->id]) }}" method="POST">
             @csrf
             <input class="cancel" type="image" src="/img/cross.png" alt="送信する" width="25px" height="25px" onclick='return confirm("予約を取り消しますか？");'>
           </form>
@@ -53,17 +53,17 @@
                 詳しくみる
               </a>
               @if( Auth::check() )
-              @if(count($shop->likes)==0)
-              <form method="POST" action="{{ route('like', ['shop_id' => $shop->id]) }}">
+                @if(count($shop->likes)==0)
+                <form method="POST" action="{{ route('like', ['shop_id' => $shop->id]) }}">
+                  @csrf
+                  <input class="shop-card__content__icon inactive" type="image" src="/img/unlike.png" alt="いいね" width="32px" height="32px">
+                </form>
+                @else
                 @csrf
-                <input class="shop-card__content__icon inactive" type="image" src="/img/unlike.png" alt="いいね" width="32px" height="32px">
-              </form>
-              @else
-              <form method="POST" action="{{ route('unlike', ['shop_id' => $shop->id]) }}">
-                @csrf
-                <input class="shop-card__content__icon inactive" type="image" src="/img/like.png" alt="いいねを外す" width="32px" height="32px">
-              </form>
-              @endif
+                <form class="ml-a" method="POST" action="{{ route('unlike', ['shop_id' => $shop->id]) }}">
+                  <input class="shop-card__content__icon inactive" type="image" src="/img/like.png" alt="いいねを外す" width="32px" height="32px">
+                </form>
+                @endif
               @endif
             </div>
           </div>
